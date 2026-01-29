@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tongue Software LLC | Precision Publishing & Digital Systems</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --studio-indigo: #4f46e5;
+            --info-cyan: #06b6d4;
+            --deep-slate: #0f172a;
+            --glass-bg: rgba(15, 23, 42, 0.95);
+            --text-main: #94a3b8;
+            --white: #f8fafc;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; line-height: 1.6; color: var(--text-main); background: var(--deep-slate); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; color: var(--white); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+        /* 1. HERO SCREEN (DIGITAL FRONTIER) */
+        .hero { 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.15), transparent),
+                        linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+            border-bottom: 1px solid #1e293b;
+        }
+        .hero-inner { width: 100%; text-align: left; }
+        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); line-height: 0.9; margin-bottom: 25px; letter-spacing: -2px; }
+        .hero p { font-size: 1.2rem; letter-spacing: 5px; font-weight: 300; text-transform: uppercase; color: var(--info-cyan); border-left: 3px solid var(--studio-indigo); padding-left: 20px; }
+
+        /* SECTION UTILS */
+        section { padding: 120px 0; }
+        .tagline { color: var(--studio-indigo); font-weight: 600; font-size: 0.85rem; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .section-title { font-size: 3rem; margin-bottom: 50px; color: var(--white); }
+
+        /* 2. ABOUT US (THE PLANO LOGIC) */
+        .about-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
+        .about-text p { font-size: 1.15rem; color: var(--text-main); margin-bottom: 25px; font-weight: 300; }
+
+        /* 3. SERVICES (SOFTWARE & INFORMATION SYSTEMS) */
+        .services { background: #0c111d; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .service-card { padding: 60px; background: #111827; border: 1px solid #1e293b; transition: var(--transition); }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--info-cyan); box-shadow: 0 20px 40px -20px rgba(6, 182, 212, 0.3); }
+        .service-card h3 { margin-bottom: 20px; font-size: 1.6rem; color: var(--white); }
+        .service-card p { font-size: 0.95rem; }
+
+        /* 4. STRATEGIC EDGE (WHY US) */
+        .edge-block { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
+        .edge-item h3 { font-size: 1.4rem; margin-bottom: 20px; color: var(--info-cyan); display: flex; align-items: center; gap: 15px; }
+        .edge-item h3::before { content: "//"; font-size: 0.9rem; color: var(--studio-indigo); }
+        .edge-item p { font-size: 1rem; color: var(--text-main); }
+
+        /* 5. PUBLISHING PIPELINE (PROCESS) */
+        .process { background: var(--deep-slate); border-top: 1px solid #1e293b; }
+        .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
+        .process-step { position: relative; }
+        .step-num { font-size: 5rem; font-family: 'Syne'; color: rgba(79, 70, 229, 0.05); position: absolute; top: -50px; left: 0; }
+        .process-step h3 { margin-bottom: 20px; position: relative; z-index: 1; color: var(--white); }
+        .process-step p { opacity: 0.8; font-weight: 300; font-size: 0.95rem; }
+
+        /* 6. ENGAGEMENT (CONTACT FORM) */
+        .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 120px; }
+        .form-group { margin-bottom: 30px; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 12px; text-transform: uppercase; color: var(--info-cyan); letter-spacing: 2px; }
+        .form-control { width: 100%; padding: 20px; background: #111827; border: 1px solid #1e293b; color: var(--white); font-family: inherit; transition: var(--transition); }
+        .form-control:focus { border-color: var(--studio-indigo); outline: none; }
+        .submit-btn { padding: 20px 50px; background: var(--studio-indigo); color: var(--white); border: none; font-family: 'Syne'; font-weight: 800; cursor: pointer; transition: var(--transition); width: 100%; text-transform: uppercase; letter-spacing: 3px; }
+        .submit-btn:hover { background: var(--info-cyan); transform: translateY(-3px); }
+
+        /* 7. GLOBAL FOOTER (SITE DATA) */
+        footer { padding: 100px 0; background: #080c14; color: #4b5563; border-top: 1px solid #1e293b; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; }
+        .footer-brand h2 { color: var(--white); font-size: 2.2rem; margin-bottom: 20px; }
+        .footer-info p { margin-bottom: 15px; font-size: 1.1rem; }
+        .footer-info strong { color: var(--info-cyan); text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 6px; letter-spacing: 2px; }
+        .copyright { margin-top: 80px; text-align: center; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 40px; letter-spacing: 2px; }
+
+        @media (max-width: 992px) {
+            .about-wrap, .process-grid, .edge-block, .contact-wrap, .footer-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-inner">
+                <h1>The Language of Code</h1>
+                <p>Game Tongue Software LLC: Advanced Software Publishing & Information Logistics</p>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="about-wrap">
+                <div class="about-text">
+                    <span class="tagline">The Studio</span>
+                    <h2 class="section-title">Software Authority in Plano, Texas</h2>
+                    <p>Located in the technology-driven corridor of Collin County, Game Tongue Software LLC is a premier firm within the Software Publishers and Information sector. Under the visionary leadership of Key Principal Tony Nguyen, we bridge the gap between complex digital architecture and end-user accessibility.</p>
+                    <p>Operating from our headquarters at 6557 Roundrock Trl, we specialize in the meticulous publishing of prepackaged software. We believe that software publishing is a precise science, requiring absolute structural integrity and high-performance digital distribution.</p>
+                    <p>As a robust representative of the North Texas digital economy, we leverage our specialized expertise to deliver high-integrity software solutions and media streaming infrastructure.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000" alt="Software Studio Infrastructure" style="width:100%; border-radius: 4px; box-shadow: 0 10px 40px -15px var(--studio-indigo);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <span class="tagline">Capabilities</span>
+            <h2 class="section-title">Professional Digital Solutions</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>Software Publishing</h3>
+                    <p>We manage the high-integrity publishing of prepackaged software applications. Our lifecycle management ensures that specialized digital assets are deployed with maximum stability across global networks.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Media Streaming Distribution</h3>
+                    <p>Operating within the broader Information sector, we engineer sophisticated media streaming distribution services. We optimize digital delivery channels to ensure low-latency content streaming for professional partners.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Computing Infrastructure</h3>
+                    <p>Our firm provides the technical backbone for computing infrastructure, data processing, and web hosting services. We ensure that digital platforms maintain absolute uptime and technical integrity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <span class="tagline">The Edge</span>
+            <h2 class="section-title">Why Partners Choose Our Framework</h2>
+            <div class="edge-block">
+                <div class="edge-item">
+                    <h3>Plano Strategic Hub</h3>
+                    <p>Our location at 6557 Roundrock Trl provides a critical North Texas logistical anchor for software distribution and technical support.</p>
+                </div>
+                <div class="edge-item">
+                    <h3>Nguyen-Led Integrity</h3>
+                    <p>Key Principal Tony Nguyen personally oversees our publishing standards, ensuring every project reflects our commitment to executive-level accountability.</p>
+                </div>
+                <div class="edge-item">
+                    <h3>Information Sector Mastery</h3>
+                    <p>We provide cross-industry expertise, linking telecommunications, broadcasting, and software publishing into a single technical pipeline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="container">
+            <span class="tagline">Workflow</span>
+            <h2 class="section-title">Our Technical Protocol</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <h3>Technical Audit</h3>
+                    <p>We analyze the digital constraints of your software to build a solid foundation for publishing and distribution.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <h3>System Optimization</h3>
+                    <p>Our team develops custom staging environments that align with high-performance media streaming and data processing standards.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <h3>Global Deployment</h3>
+                    <p>We oversee the transition from prepackaged software to live systems, ensuring total project integrity and viability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="contact-wrap">
+                <div>
+                    <span class="tagline">Connect</span>
+                    <h2 class="section-title">Initialize Digital Consultation</h2>
+                    <p>Reach out to our Plano, TX headquarters to discuss software publishing, media streaming services, or strategic information sector partnerships.</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label>ENTITY NAME</label>
+                            <input type="text" class="form-control" placeholder="Organization or Corporate Name">
+                        </div>
+                        <div class="form-group">
+                            <label>SECURE EMAIL</label>
+                            <input type="email" class="form-control" placeholder="info@gametonguesoftware.pro">
+                        </div>
+                        <div class="form-group">
+                            <label>MISSION BRIEF</label>
+                            <textarea class="form-control" rows="5" placeholder="How can our software framework assist your digital objectives?"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Execute Link</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>GAME TONGUE</h2>
+                    <p>Software Integrity. Plano Reliability.</p>
+                </div>
+                <div class="footer-info">
+                    <p><strong>Texas Headquarters:</strong> 6557 Roundrock Trl Plano, TX, 75023-3410 United States</p>
+                    <p><strong>Digital Inquiries:</strong> info@gametonguesoftware.pro</p>
+                    <p><strong>Support:</strong> info@gametonguesoftware.pro</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Game Tongue Software LLC. All Rights Reserved. Principal: Tony Nguyen.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
